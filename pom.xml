@@ -83,6 +83,44 @@ THE SOFTWARE.
         <directory>src/main/java</directory>
       </resource>
     </resources>
+      <plugins>
+          <plugin>
+              <artifactId>maven-surefire-plugin</artifactId>
+              <configuration>
+                  <skipTests>${skipUT}</skipTests>
+              </configuration>
+          </plugin>
+
+      </plugins>
   </build>
+  
+  <profiles>
+      <profile>
+            <id>run-its</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.16</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemProperties>
+                                <hpiLocation>${project.build.finalName}.hpi</hpiLocation>
+                            </systemProperties>
+                            <skipTests>${skipIT}</skipTests>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+      </profile>
+  </profiles>
+  
 
 </project>
