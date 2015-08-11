@@ -41,6 +41,11 @@ THE SOFTWARE.
   <description>Demonstration of UI controls available in Jenkins based on Stapler, Jelly, Groovy, etc.</description>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/UI+Samples+Plugin</url>
 
+    <properties>
+        <skipUT>${skipTests}</skipUT>
+        <skipIT>${skipTests}</skipIT>
+    </properties>
+
     <licenses>
         <license>
             <name>MIT</name>
